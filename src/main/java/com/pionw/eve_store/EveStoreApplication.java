@@ -1,4 +1,4 @@
-package org.example.evestore;
+package com.pionw.eve_store;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
