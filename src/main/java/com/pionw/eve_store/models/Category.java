@@ -1,9 +1,6 @@
 package com.pionw.eve_store.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Category {
@@ -11,9 +8,11 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
+    @Column(columnDefinition = "TEXT")
     private String description;
     private Long categoryId;
-    private String groups;
+    @Column(columnDefinition = "TEXT")
+    private String groups_txt;
     private Boolean published;
 
     public Category() {
@@ -51,12 +50,12 @@ public class Category {
         this.categoryId = categoryId;
     }
 
-    public String getGroups() {
-        return groups;
+    public String getGroups_txt() {
+        return groups_txt;
     }
 
-    public void setGroups(String groups) {
-        this.groups = groups;
+    public void setGroups_txt(String groups) {
+        this.groups_txt = groups;
     }
 
     public Boolean getPublished() {

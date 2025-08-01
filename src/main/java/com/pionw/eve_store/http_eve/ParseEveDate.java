@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class ParseEveDate {
     private static List<Long> getListEveIdItem() {
@@ -83,8 +84,11 @@ public class ParseEveDate {
         Item item = new Item();
         Object result = map.get("type_id");
         item.setEveId((long) (int) result);
-        //item.setDescription((String) map.get("description"));
-        item.setDescription("Description");
+        if (map.get("description") != null) {
+            item.setDescription((String) map.get("description"));
+        } else {
+            item.setDescription("No Description");
+        }
         item.setName((String) map.get("name"));
         item.setGroup_id((long) (int) map.get("group_id"));
         if (map.get("icon_id") != null){
@@ -123,12 +127,17 @@ public class ParseEveDate {
         }
         Group group = new Group();
         Object result = map.get("group_id");
-        group.setGroupId((long) (int) result);
+        group.setGroup_id((long) (int) result);
         group.setDescription("Description");
         group.setName((String) map.get("name"));
         group.setPublished((boolean) map.get("published"));
-        group.setCategoryId((long)(int) map.get("category_id"));
-        group.setTypes((String) map.get("types"));
+        group.setCategory_id((long)(int) map.get("category_id"));
+
+        ArrayList<Integer> groupIds = new ArrayList<>();
+        groupIds.addAll((ArrayList<Integer>) map.get("types"));
+        group.setTypes(groupIds.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining(",")));
 
         return group;
     }
@@ -161,7 +170,12 @@ public class ParseEveDate {
         category.setDescription("Description");
         category.setName((String) map.get("name"));
         category.setPublished((boolean) map.get("published"));
-        category.setGroups((String) map.get("groups"));
+
+        ArrayList<Integer> categoryIds = new ArrayList<>();
+        categoryIds.addAll((ArrayList<Integer>) map.get("groups"));
+        category.setGroups_txt(categoryIds.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining(",")));
 
         return category;
     }
@@ -179,5 +193,6 @@ public class ParseEveDate {
         }
         return categories;
     }
+
 }
 

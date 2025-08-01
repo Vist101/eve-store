@@ -18,7 +18,7 @@ public class GroupController {
     @Autowired
     private GroupRepository groupRepository;
 
-    @GetMapping("/setup/initgroup")
+    @GetMapping("/setup/initgroup22")
     public String initGroup(Model model) {
         List<Group> group = ParseEveDate.getListGroups();
         groupRepository.saveAll(group);

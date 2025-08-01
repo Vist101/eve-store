@@ -23,7 +23,7 @@ public class ItemController {
         return "item";
     }
 
-    @GetMapping("/setup/inititem")
+    @GetMapping("/setup/inititem22")
     public String initItem(Model model) {
         List<Item> items = ParseEveDate.getListEveItems();
         itemRepository.saveAll(items);

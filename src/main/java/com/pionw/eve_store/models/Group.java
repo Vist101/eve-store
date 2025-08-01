@@ -1,20 +1,19 @@
 package com.pionw.eve_store.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "group_eve")
 public class Group {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private Long group_id;
+    private Long category_id;
     private String name;
+    @Column(columnDefinition = "TEXT")
     private String description;
-    private Long groupId;
-    private Long categoryId;
+    @Column(columnDefinition = "TEXT")
     private String types;
     private Boolean published;
 
@@ -45,20 +44,20 @@ public class Group {
         this.description = description;
     }
 
-    public Long getGroupId() {
-        return groupId;
+    public Long getGroup_id() {
+        return group_id;
     }
 
-    public void setGroupId(Long groupId) {
-        this.groupId = groupId;
+    public void setGroup_id(Long groupId) {
+        this.group_id = groupId;
     }
 
-    public Long getCategoryId() {
-        return categoryId;
+    public Long getCategory_id() {
+        return category_id;
     }
 
-    public void setCategoryId(Long categoryId) {
-        this.categoryId = categoryId;
+    public void setCategory_id(Long categoryId) {
+        this.category_id = categoryId;
     }
 
     public String getTypes() {
