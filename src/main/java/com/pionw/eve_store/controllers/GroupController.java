@@ -20,8 +20,13 @@ public class GroupController {
 
     @GetMapping("/setup/initgroup22")
     public String initGroup(Model model) {
-        List<Group> group = ParseEveDate.getListGroups();
-        groupRepository.saveAll(group);
+        int page = 1;
+        List<Group> groups = ParseEveDate.getListGroups(page, true);
+        while (!groups.isEmpty()) {
+            groupRepository.saveAll(groups);
+            page++;
+            groups = ParseEveDate.getListGroups(page, true);
+        }
         return "redirect:/";
     }
 }

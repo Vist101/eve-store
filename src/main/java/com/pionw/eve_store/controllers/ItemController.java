@@ -25,8 +25,14 @@ public class ItemController {
 
     @GetMapping("/setup/inititem22")
     public String initItem(Model model) {
-        List<Item> items = ParseEveDate.getListEveItems();
-        itemRepository.saveAll(items);
+        int page = 1;
+
+        List<Item> items = ParseEveDate.getListEveItems(page, true);
+        while (!items.isEmpty()) {
+            itemRepository.saveAll(items);
+            page++;
+            items = ParseEveDate.getListEveItems(page, true);
+        }
         return "redirect:/";
     }
 }

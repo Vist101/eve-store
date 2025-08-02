@@ -19,6 +19,7 @@ public class CategoryController {
 
     @GetMapping("/setup/initcategory22")
     public String initCategory(Model model) {
+
         List<Category> categories = ParseEveDate.getListCategory();
         categoryRepository.saveAll(categories);
         return "redirect:/";
