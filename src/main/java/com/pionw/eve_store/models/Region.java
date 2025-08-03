@@ -13,6 +13,7 @@ public class Region {
     private String description;
     @Column(columnDefinition = "TEXT")
     private String constellations;
+    private Boolean setup;
 
     public Region() {
     }
@@ -55,5 +56,13 @@ public class Region {
 
     public void setConstellations(String constellations) {
         this.constellations = constellations;
+    }
+
+    public Boolean getSetup() {
+        return setup;
+    }
+
+    public void setSetup(Boolean setup) {
+        this.setup = setup;
     }
 }

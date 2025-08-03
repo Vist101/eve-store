@@ -259,6 +259,7 @@ public class ParseEveDate {
             region.setDescription("");
         }
         region.setConstellations(obj.getJSONArray("constellations").toString());
+        region.setSetup(true);
         return region;
     }
 

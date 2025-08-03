@@ -17,7 +17,7 @@ public class RegionController {
     @Autowired
     private RegionRepository regionRepository;
 
-    @GetMapping("/setup/initregion22")
+    @GetMapping("/setup/initregion")
     public String initRegion(Model model) {
         List<Region> regions = ParseEveDate.getListRegion();
         regionRepository.saveAll(regions);
